@@ -18,6 +18,21 @@ const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 }; // 配列をランダムにシャッフルするヘルパー関数
 
+const shuffleQuizData = (quizData) => {
+  return quizData.map((question) => {
+    const shuffledOptions = shuffleArray([...question.options]);
+    const correctAnswerIndex = shuffledOptions.indexOf(
+      question.options[question.correctAnswer]
+    );
+
+    return {
+      ...question,
+      options: shuffledOptions,
+      correctAnswer: correctAnswerIndex,
+    };
+  });
+};
+
 const Quiz = () => {
   const dispatch = useDispatch(); // ディスパッチをするために使用
   const { questions, currentQuestionIndex, score, userAnswers } = useSelector(
@@ -26,14 +41,16 @@ const Quiz = () => {
   const router = useRouter(); // Nextjsのルーターで、ページ遷移を制御
 
   useEffect(() => {
+    console.log("useEffect start");
     dispatch(resetQuiz());
     try {
-      const shuffledQuestions = shuffleArray(quizData).slice(0, 5); // quizDataからランダムに5問を取得
+      const shuffledQuestions = shuffleQuizData(quizData).slice(0, 5); // quizDataからランダムに5問を取得
       dispatch(setQuestions(shuffledQuestions));
       console.log(shuffledQuestions);
     } catch (error) {
       console.error(error.message);
     }
+    console.log("useEffect end");
   }, [dispatch]); // クイズページが初めてレンダリングされた時に実行されます。
 
   // 選択肢をクリックしたとき

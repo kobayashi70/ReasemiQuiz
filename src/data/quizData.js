@@ -327,28 +327,4 @@ const quizData = [
   },
 ];
 
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// }
-
-// function shuffleQuizData(quizData) {
-//   return quizData.map((question) => {
-//     const shuffledOptions = shuffleArray([...question.options]);
-//     const newCorrectAnswer = shuffledOptions.indexOf(
-//       question.options[question.correctAnswer]
-//     );
-//     return {
-//       ...question,
-//       options: shuffledOptions,
-//       correctAnswer: newCorrectAnswer,
-//     };
-//   });
-// }
-
-// const shuffledQuizData = shuffleQuizData(quizData);
-// console.log(shuffledQuizData);
 export default quizData;
