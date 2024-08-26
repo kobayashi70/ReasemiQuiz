@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  questions: [],
-  currentQuestionIndex: 0,
-  score: 0,
-  userAnswers: [],
+  course: null, // 選択されたコース
+  questions: [], // フィルタされた問題を格納
+  currentQuestionIndex: 0, // 現在の問題のindex
+  score: 0, // スコア
+  userAnswers: [], // ユーザーの解答
 };
 
 export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    setCourse: (state, action) => {
+      state.course = action.payload;
+    },
+
     setQuestions: (state, action) => {
       state.questions = action.payload;
     },
@@ -27,7 +32,15 @@ export const quizSlice = createSlice({
       state.currentQuestionIndex += 1;
     },
 
-    resetQuiz: (state) => {
+    resetQuizTop: (state) => {
+      state.course = null;
+      state.questions = [];
+      state.currentQuestionIndex = 0;
+      state.score = 0;
+      state.userAnswers = [];
+    },
+
+    resetQuizRechallenge: (state) => {
       state.questions = [];
       state.currentQuestionIndex = 0;
       state.score = 0;
@@ -37,10 +50,12 @@ export const quizSlice = createSlice({
 });
 
 export const {
+  setCourse,
   setQuestions,
   setSelectedOption,
   incrementQuestionIndex,
-  resetQuiz,
+  resetQuizTop,
+  resetQuizRechallenge,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

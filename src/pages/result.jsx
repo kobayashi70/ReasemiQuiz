@@ -2,7 +2,7 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { resetQuiz } from "@/store/quizSlice";
+import { resetQuizRechallenge, resetQuizTop } from "@/store/quizSlice";
 
 const Result = () => {
   const dispatch = useDispatch();
@@ -10,11 +10,12 @@ const Result = () => {
   const { score, userAnswers, questions } = useSelector((state) => state.quiz);
 
   const handleRetry = () => {
-    dispatch(resetQuiz());
+    dispatch(resetQuizRechallenge());
     router.push("/quiz");
   };
 
   const handleGoToTop = () => {
+    dispatch(resetQuizTop());
     router.push("/");
   };
 

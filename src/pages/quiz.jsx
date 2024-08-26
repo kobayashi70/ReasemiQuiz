@@ -1,6 +1,5 @@
 // クイズページ
-
-import React, { useEffect } from "react"; // データのfetchやDOM操作
+import { useEffect } from "react"; // データのfetchやDOM操作
 import { useSelector, useDispatch } from "react-redux"; // storeから状態を取得, actionを実行
 import { useRouter } from "next/router"; // Nextjsのルーター機能
 
@@ -8,14 +7,25 @@ import {
   setQuestions,
   setSelectedOption,
   incrementQuestionIndex,
-  resetQuiz,
 } from "@/store/quizSlice"; // 問題を設定、回答を選択（正誤判定）、次の問題へ
-import quizData from "@/data/quizData"; // クイズデータ
+import quizData, { getRandomQuestions } from "@/data/quizData"; // クイズデータ ランダム関数
 import Question from "@/components/Question"; // 質問テキスト
 import Options from "@/components/Options"; // 選択肢
 
 const shuffleArray = (array) => {
-  return array.sort(() => Math.random() - 0.5);
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
 }; // 配列をランダムにシャッフルするヘルパー関数
 
 const shuffleQuizData = (quizData) => {
@@ -35,23 +45,29 @@ const shuffleQuizData = (quizData) => {
 
 const Quiz = () => {
   const dispatch = useDispatch(); // ディスパッチをするために使用
-  const { questions, currentQuestionIndex, score, userAnswers } = useSelector(
+  const { questions, currentQuestionIndex, userAnswers, course } = useSelector(
     (state) => state.quiz
   ); //useSelectorで state.quizから問題、現在の問題のインデックス、スコア、ユーザーの回答を取得
   const router = useRouter(); // Nextjsのルーターで、ページ遷移を制御
 
   useEffect(() => {
-    console.log("useEffect start");
-    dispatch(resetQuiz());
     try {
-      const shuffledQuestions = shuffleQuizData(quizData).slice(0, 5); // quizDataからランダムに5問を取得
+      let filteredQuizData = quizData;
+
+      if (course && course !== "full") {
+        filteredQuizData = quizData.filter(
+          (question) => question.category.toLowerCase() === course
+        );
+      }
+
+      const randomQuestions = getRandomQuestions(filteredQuizData, 5);
+      const shuffledQuestions = shuffleQuizData(randomQuestions);
       dispatch(setQuestions(shuffledQuestions));
-      console.log(shuffledQuestions);
+      // console.log(shuffledQuestions);
     } catch (error) {
       console.error(error.message);
     }
-    console.log("useEffect end");
-  }, [dispatch]); // クイズページが初めてレンダリングされた時に実行されます。
+  }, [dispatch, course]); // クイズページが初めてレンダリングされた時に実行されます。
 
   // 選択肢をクリックしたとき
   const handleOptionClick = (index) => {
