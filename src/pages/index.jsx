@@ -23,12 +23,14 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="h-screen flex flex-col items-center bg-gradient-to-r from-cyan-400 to-blue-300 sm:pb-12 sm:h-full">
-        <img
-          src="/titleimage.png"
-          alt="タイトルロゴ"
-          className="mb-3 sm:object-contain sm:h-2/5"
-        />
-        <div className="flex flex-wrap sm:flex-col items-center space-x-4 justify-center max-w-[960px] w-full">
+        <div className=" sm:h-60">
+          <img
+            src="/titleimage.png"
+            alt="タイトルロゴ"
+            className="mb-3 sm:h-96"
+          />
+        </div>
+        <div className="flex flex-wrap sm:flex-col items-center space-x-4 justify-center max-w-[960px] w-full sm:mt-16">
           <button
             className="mt-3 rotate-3 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
             onClick={() => startQuiz("full")}
