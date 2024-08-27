@@ -63,7 +63,7 @@ const Quiz = () => {
       const randomQuestions = getRandomQuestions(filteredQuizData, 5);
       const shuffledQuestions = shuffleQuizData(randomQuestions);
       dispatch(setQuestions(shuffledQuestions));
-      // console.log(shuffledQuestions);
+      console.log(shuffledQuestions);
     } catch (error) {
       console.error(error.message);
     }
