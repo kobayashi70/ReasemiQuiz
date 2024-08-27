@@ -163,7 +163,7 @@ const quizData = [
 
   {
     question: "JavaScriptで変数を宣言するためのキーワードはどれですか？",
-    options: ["var", "let", "const", "以上すべて"],
+    options: ["var", "let", "const", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
@@ -187,24 +187,19 @@ const quizData = [
   {
     question:
       "JavaScriptでオブジェクトのプロパティにアクセスする方法はどれですか？",
-    options: [
-      "object.property",
-      "object[property]",
-      "以上の両方",
-      "どれでもない",
-    ],
+    options: ["object.property", "object[property]", "両方", "どれでもない"],
     correctAnswer: 2,
     category: "javascript",
   },
   {
     question: "JavaScriptで非同期処理を行うための構文はどれですか？",
-    options: ["async/await", "setTimeout", "Promise", "以上すべて"],
+    options: ["async/await", "setTimeout", "Promise", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
   {
     question: "JavaScriptで文字列を数値に変換する方法はどれですか？",
-    options: ["parseInt()", "Number()", "parseFloat()", "以上すべて"],
+    options: ["parseInt()", "Number()", "parseFloat()", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
@@ -216,13 +211,13 @@ const quizData = [
   },
   {
     question: "JavaScriptで条件分岐を行うための構文はどれですか？",
-    options: ["if...else", "switch", "三項演算子", "以上すべて"],
+    options: ["if...else", "switch", "三項演算子", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
   {
     question: "JavaScriptでループを作成するための構文はどれですか？",
-    options: ["for", "while", "do...while", "以上すべて"],
+    options: ["for", "while", "do...while", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
@@ -232,7 +227,7 @@ const quizData = [
       "document.getElementById()",
       "document.querySelector()",
       "document.getElementsByClassName()",
-      "以上すべて",
+      "すべて",
     ],
     correctAnswer: 3,
     category: "javascript",
@@ -250,7 +245,7 @@ const quizData = [
   },
   {
     question: "JavaScriptで変数を宣言するにはどのキーワードを使用しますか？",
-    options: ["var", "let", "const", "すべての選択肢"],
+    options: ["var", "let", "const", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
@@ -305,15 +300,15 @@ const quizData = [
     options: [
       "ドット記法 (object.property)",
       "ブラケット記法 (object['property'])",
-      "どちらも可能",
-      "どちらも不可能",
+      "両方可能",
+      "両方不可能",
     ],
     correctAnswer: 2,
     category: "javascript",
   },
   {
     question: "JavaScriptで非同期処理を行うためのメソッドはどれですか？",
-    options: ["setTimeout", "setInterval", "Promise", "すべての選択肢"],
+    options: ["setTimeout", "setInterval", "Promise", "すべて"],
     correctAnswer: 3,
     category: "javascript",
   },
@@ -351,7 +346,7 @@ const quizData = [
     options: [
       "関数コンポーネント",
       "クラスコンポーネント",
-      "以上の両方",
+      "両方",
       "どれでもない",
     ],
     correctAnswer: 2,
@@ -366,7 +361,7 @@ const quizData = [
   },
   {
     question: "Reactで条件付きレンダリングを行うための方法はどれですか？",
-    options: ["if文", "三項演算子", "論理AND演算子", "以上すべて"],
+    options: ["if文", "三項演算子", "論理AND演算子", "すべて"],
     correctAnswer: 3,
     category: "react",
   },
@@ -382,7 +377,7 @@ const quizData = [
     options: [
       "関数コンポーネント",
       "クラスコンポーネント",
-      "以上の両方",
+      "両方",
       "どれでもない",
     ],
     correctAnswer: 1,
@@ -398,12 +393,7 @@ const quizData = [
   {
     question:
       "Reactでコンポーネントのスタイルを動的に変更するために使用されるのはどれですか？",
-    options: [
-      "CSSクラス",
-      "インラインスタイル",
-      "styled-components",
-      "以上すべて",
-    ],
+    options: ["CSSクラス", "インラインスタイル", "styled-components", "すべて"],
     correctAnswer: 3,
     category: "react",
   },
@@ -412,7 +402,7 @@ const quizData = [
     options: [
       "関数コンポーネント",
       "クラスコンポーネント",
-      "どちらも可能",
+      "関数、クラスどちらも可能",
       "コンポーネントは作成できない",
     ],
     correctAnswer: 2,
@@ -909,7 +899,7 @@ const quizData = [
   },
   {
     question: "Node.jsで非同期処理を行うために使用されるのはどれですか？",
-    options: ["Callbacks", "Promises", "Async/Await", "以上すべて"],
+    options: ["Callbacks", "Promises", "Async/Await", "すべて"],
     correctAnswer: 3,
     category: "nodejs",
   },
@@ -945,7 +935,7 @@ const quizData = [
       "メモリ効率が良い",
       "非同期処理が可能",
       "データの一部を逐次処理できる",
-      "以上すべて",
+      "すべて",
     ],
     correctAnswer: 3,
     category: "nodejs",
@@ -970,7 +960,7 @@ const quizData = [
   {
     question:
       "Node.jsでパッケージを管理するために使用されるツールはどれですか？",
-    options: ["npm", "yarn", "bower", "以上すべて"],
+    options: ["npm", "yarn", "bower", "すべて"],
     correctAnswer: 3,
     category: "nodejs",
   },
