@@ -30,18 +30,7 @@ const shuffleArray = (array) => {
 }; // 配列をランダムにシャッフルするヘルパー関数
 
 const shuffleQuizData = (quizData) => {
-  return quizData.map((question) => {
-    const shuffledOptions = shuffleArray([...question.options]);
-    const correctAnswerIndex = shuffledOptions.indexOf(
-      question.options[question.correctAnswer]
-    );
-
-    return {
-      ...question,
-      options: shuffledOptions,
-      correctAnswer: correctAnswerIndex,
-    };
-  });
+  return shuffleArray([...quizData]);
 };
 
 const Quiz = () => {
