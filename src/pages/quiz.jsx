@@ -1,4 +1,5 @@
 // クイズページ
+import Head from "next/head";
 import { useEffect } from "react"; // データのfetchやDOM操作
 import { useSelector, useDispatch } from "react-redux"; // storeから状態を取得, actionを実行
 import { useRouter } from "next/router"; // Nextjsのルーター機能
@@ -109,8 +110,40 @@ const Quiz = () => {
     }
   };
 
+  const getTitle = () => {
+    switch (course) {
+      case "full":
+        return "りあゼミクイズ：ALL";
+      case "html-css":
+        return "りあゼミクイズ：HTML/CSS";
+      case "javascript":
+        return "りあゼミクイズ：JavaScript";
+      case "react":
+        return "りあゼミクイズ：React";
+      case "typescript":
+        return "りあゼミクイズ：TypeScript";
+      case "mysql":
+        return "りあゼミクイズ：MySQL";
+      case "nodejs":
+        return "りあゼミクイズ：Node.js";
+      case "aws":
+        return "りあゼミクイズ：AWS";
+      default:
+        return "りあゼミクイズ";
+    }
+  };
+
   return (
     <div>
+      <Head>
+        <title>{getTitle()}</title>
+        <meta
+          name="description"
+          content="選択肢を選んでボタンを押してください！全問正解を目指して頑張ろう！"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {/* 問題文表示 */}
       <Question
         questionText={questions[currentQuestionIndex]?.question || ""}

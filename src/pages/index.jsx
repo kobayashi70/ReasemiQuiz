@@ -22,8 +22,8 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen flex flex-col justify-center sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
-        <div className="">
+      <div className="min-h-screen flex flex-col pt-40 mb- sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
+        <div className="mb-10 pb-10 sm:mb-0 sm:pb-0">
           <Image
             src="/titleimage.png"
             alt="タイトルロゴ"
