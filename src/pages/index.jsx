@@ -22,7 +22,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-screen sm:h-svh flex flex-col justify-center sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
+      <div className="min-h-screen flex flex-col justify-center sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
         <div className="">
           <Image
             src="/titleimage.png"
@@ -169,7 +169,7 @@ const Home = () => {
             </span>
           </button>
           <button
-            className="mt-3 rotate-2 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 animate-drop-in-wobble animate-delay-7"
+            className="mt-3 sm:mb-8 rotate-2 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 animate-drop-in-wobble animate-delay-7"
             onClick={() => startQuiz("aws")}
           >
             <span className="relative w-28 h-12 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
