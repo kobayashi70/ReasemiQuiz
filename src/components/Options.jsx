@@ -2,16 +2,16 @@
 
 const Options = ({ options, handleOptionClick, selectedOption }) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="mt-6 flex justify-between sm:flex-col">
       {options.map((option, index) => (
-        <label key={index} style={{ display: "flex", marginRight: "24px" }}>
+        <label key={index} className="w-56 h-96 sm:h-64 flex justify-start ">
           <input
-            type="checkbox"
+            type="radio"
             checked={selectedOption === index}
             onChange={() => handleOptionClick(index)}
-            style={{ marginRight: "4px" }}
+            className="form-radio  text-blue-600 h-6 w-6"
           />
-          {option}
+          <span className="ml-2 text-lg text-neutral-700">{option}</span>
         </label>
       ))}
     </div>

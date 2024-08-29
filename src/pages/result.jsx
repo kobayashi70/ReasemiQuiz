@@ -4,13 +4,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { resetQuizRechallenge, resetQuizTop } from "@/store/quizSlice";
+import dynamic from "next/dynamic";
+
+const DynamicClock = dynamic(() => import("../components/Clock"), {
+  ssr: false, // サーバーサイドレンダリングを無効にする
+});
 
 const Result = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { score, userAnswers, questions } = useSelector((state) => state.quiz);
   const [animatedScore, setAnimatedScore] = useState(0);
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     // スコアアニメーションの設定
@@ -28,6 +34,7 @@ const Result = () => {
       } else {
         // 3s後にスコア表示
         setAnimatedScore(score);
+        setShowMessage(true);
         cancelAnimationFrame(animationFrame);
       }
     };
@@ -70,13 +77,18 @@ const Result = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-h-screen flex justify-center  bg-animated-gradient p-6">
-        <div className="p-12 sm:p-2 bg-indigo-50 bg-opacity-80 rounded-lg sm:w-auto">
-          <h1 className="text-4xl font-bold mb-8">結果発表</h1>
+        <DynamicClock />
+        <div className="p-12 sm:p-2 bg-indigo-50 bg-opacity-80 rounded-lg sm:w-80">
+          <h1 className="text-4xl font-bold mb-8 text-neutral-700">結果発表</h1>
           <div className="text-center mb-8 p-6 bg-indigo-50 bg-opacity-80 rounded-lg">
-            <p className="text-2xl font-semibold mb-4">
+            <p className="text-2xl text-neutral-700 font-semibold mb-4">
               あなたのスコア: {animatedScore} / 5
             </p>
-            <p className="text-xl ">{getMessage()}</p>
+            <p
+              className={`text-neutral-700 text-xl ${showMessage ? "fade-in" : "opacity-0"}`}
+            >
+              {getMessage()}
+            </p>
           </div>
           <div className="w-full max-w-2xl mb-8">
             <ul>
@@ -92,25 +104,14 @@ const Result = () => {
                     >
                       {userAnswers[index]?.isCorrect ? "○" : "✖"}
                     </span>
-                    <span>
+                    <span className="text-neutral-700">
                       {index + 1}. {question.question}
                     </span>
                   </div>
                   {/* 選択肢の表示 */}
-                  <ul className="ml-4">
+                  <ul className="ml-4 text-neutral-700">
                     {question.options.map((option, i) => (
-                      <li
-                        key={i}
-                        className={`${
-                          i === question.correctAnswer
-                            ? "text-green-500 font-semibold"
-                            : i === userAnswers[index]?.selectedOption
-                              ? "text-red-600"
-                              : ""
-                        }`}
-                      >
-                        {option}
-                      </li>
+                      <li key={i}>{option}</li>
                     ))}
                   </ul>
                 </li>
@@ -137,35 +138,39 @@ const Result = () => {
               ))}
             </ul>
             {/* 各タブの詳細表示 */}
-            <div className="p-4 rounded-b-lg bg-white shadow-lg">
-              <p>
-                <strong>正しい答え：</strong>{" "}
-                {
-                  questions[activeTab]?.options[
-                    questions[activeTab]?.correctAnswer
-                  ]
-                }
-              </p>
-              <p>
-                <strong>選択した答え：</strong>{" "}
-                {
-                  questions[activeTab]?.options[
-                    userAnswers[activeTab]?.selectedOption
-                  ]
-                }
-              </p>
+            <div className="p-4 rounded-b-lg bg-white shadow-lg h-20 overflow-auto">
+              {activeTab !== null && (
+                <>
+                  <p>
+                    <strong className="text-neutral-700">正しい答え：</strong>{" "}
+                    {
+                      questions[activeTab]?.options[
+                        questions[activeTab]?.correctAnswer
+                      ]
+                    }
+                  </p>
+                  <p>
+                    <strong className="text-neutral-700">選択した答え：</strong>{" "}
+                    {
+                      questions[activeTab]?.options[
+                        userAnswers[activeTab]?.selectedOption
+                      ]
+                    }
+                  </p>
+                </>
+              )}
             </div>
           </div>
 
           <div className="flex space-x-6 justify-center">
             <button
-              className="text-white w-48 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-bold rounded-lg text-lg px-5 py-2.5 text-center"
+              className="sm:text-xs text-white w-48 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-bold rounded-lg text-lg px-5 py-2.5 text-center"
               onClick={handleRetry}
             >
               再チャレンジする
             </button>
             <button
-              className="text-white w-48 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-bold rounded-lg text-lg px-5 py-2.5 text-center"
+              className="sm:text-xs text-white w-48 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-bold rounded-lg text-lg px-5 py-2.5 text-center"
               onClick={handleGoToTop}
             >
               トップへ

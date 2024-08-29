@@ -23,9 +23,13 @@ export const quizSlice = createSlice({
     setSelectedOption: (state, action) => {
       const { questionIndex, selectedOption, isCorrect } = action.payload;
       state.userAnswers[questionIndex] = { selectedOption, isCorrect };
-      if (isCorrect) {
-        state.score += 1;
-      }
+      // if (isCorrect) {
+      //   state.score += 1;
+      // }
+    },
+
+    incrementScore: (state) => {
+      state.score += 1;
     },
 
     incrementQuestionIndex: (state) => {
@@ -53,6 +57,7 @@ export const {
   setCourse,
   setQuestions,
   setSelectedOption,
+  incrementScore,
   incrementQuestionIndex,
   resetQuizTop,
   resetQuizRechallenge,

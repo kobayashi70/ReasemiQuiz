@@ -4,6 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setCourse } from "@/store/quizSlice";
+import dynamic from "next/dynamic";
+
+const DynamicClock = dynamic(() => import("../components/Clock"), {
+  ssr: false, // サーバーサイドレンダリングを無効にする
+});
 
 const Home = () => {
   const router = useRouter();
@@ -22,7 +27,9 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className="min-h-screen flex flex-col pt-40 mb- sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
+        <DynamicClock />
         <div className="mb-10 pb-10 sm:mb-0 sm:pb-0">
           <Image
             src="/titleimage.png"

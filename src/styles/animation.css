@@ -75,6 +75,7 @@
   }
 }
 
+/* トップページのボタン最終の傾き */
 .rotate-1 {
   --final-rotate: 1deg;
 }
@@ -99,6 +100,7 @@
   --final-rotate: -6deg;
 }
 
+/* トップページボタン、順番に落ちてくるようにするdelay */
 .animate-delay-0 {
   animation-delay: 0s;
 }
@@ -129,4 +131,18 @@
 
 .animate-delay-7 {
   animation-delay: 1.7s;
+}
+
+/* 結果ページgetMessage表示アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
 }
