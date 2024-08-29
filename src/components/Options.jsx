@@ -6,6 +6,7 @@ const Options = ({ options, handleOptionClick, selectedOption }) => {
       {options.map((option, index) => (
         <label key={index} className="w-56 h-96 sm:h-64 flex justify-start ">
           <input
+            name="radio"
             type="radio"
             checked={selectedOption === index}
             onChange={() => handleOptionClick(index)}

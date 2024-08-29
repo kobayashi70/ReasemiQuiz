@@ -136,6 +136,17 @@ const Quiz = () => {
     }
   };
 
+  const bgClass = {
+    full: "bg-animated-gradient",
+    "html-css": "bg-html-css",
+    javascript: "bg-javascript",
+    react: "bg-react",
+    typescript: "bg-typescript",
+    mysql: "bg-mysql",
+    nodejs: "bg-nodejs",
+    aws: "bg-aws",
+  }[course];
+
   return (
     <div>
       <Head>
@@ -147,7 +158,9 @@ const Quiz = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen flex flex-col pt-40 mb- sm:justify-normal sm:pt-8 items-center bg-animated-gradient">
+      <div
+        className={`min-h-screen flex flex-col items-center sm:justify-normal pt-40 sm:pt-8 ${bgClass}`}
+      >
         <DynamicClock />
         {/* 問題文表示 */}
         <div className="w-4/5">

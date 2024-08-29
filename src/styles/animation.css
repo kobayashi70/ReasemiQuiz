@@ -17,8 +17,58 @@
   }
 }
 
+/* トップページ、リザルトページbg */
 .bg-animated-gradient {
   background: linear-gradient(270deg, #34d399, #3b82f6, #85f7e7, #3bd2f8);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* クイズページbg コースごと */
+.bg-html-css {
+  background: linear-gradient(270deg, #eb8d41, #f4c772, #fb923c, #f97316);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* JavaScriptコース */
+.bg-javascript {
+  background: linear-gradient(270deg, #ebaf30, #f0c473, #fef08a, #facc15);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* Reactコース */
+.bg-react {
+  background: linear-gradient(270deg, #06b6d4, #34d399, #3b82f6, #60a5fa);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* TypeScriptコース */
+.bg-typescript {
+  background: linear-gradient(270deg, #6d28d9, #8b5cf6, #3b82f6, #60a5fa);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* MySQLコース */
+.bg-mysql {
+  background: linear-gradient(270deg, #34d399, #4ade80, #2563eb, #3b82f6);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* Node.jsコース */
+.bg-nodejs {
+  background: linear-gradient(270deg, #32e299, #38bd38, #b6e066, #a3e635);
+  background-size: 800% 800%;
+  animation: gradientAnimation 10s linear infinite;
+}
+
+/* AWSコース */
+.bg-aws {
+  background: linear-gradient(270deg, #e9ab27, #f8be51, #fb923c, #f97316);
   background-size: 800% 800%;
   animation: gradientAnimation 10s linear infinite;
 }
@@ -132,6 +182,8 @@
 .animate-delay-7 {
   animation-delay: 1.7s;
 }
+
+/* クイズページのbgグラデーション */
 
 /* 結果ページgetMessage表示アニメーション */
 @keyframes fadeIn {
