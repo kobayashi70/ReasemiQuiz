@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { resetQuizRechallenge, resetQuizTop } from "@/store/quizSlice";
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"; //動的インポートを行うNextjsの関数
 
 const DynamicClock = dynamic(() => import("../components/Clock"), {
-  ssr: false, // サーバーサイドレンダリングを無効にする
+  ssr: false, // サーバーサイドレンダリングを無効にする つけないと時計がバグる
 });
 
 const Result = () => {
@@ -78,7 +78,7 @@ const Result = () => {
       </Head>
       <div className="min-h-screen flex justify-center  bg-animated-gradient p-6">
         <DynamicClock />
-        <div className="p-12 sm:p-2 bg-indigo-50 bg-opacity-80 rounded-lg sm:w-80">
+        <div className="p-8 m-auto w-[760px] sm:p-3 bg-indigo-50 bg-opacity-80 rounded-lg sm:w-80">
           <h1 className="text-4xl font-bold mb-8 text-neutral-700">結果発表</h1>
           <div className="text-center mb-8 p-6 bg-indigo-50 bg-opacity-80 rounded-lg">
             <p className="text-2xl text-neutral-700 font-semibold mb-4">
@@ -120,7 +120,7 @@ const Result = () => {
           </div>
 
           {/* タブと詳細 */}
-          <div className="w-full max-w-2xl mb-8">
+          <div className="w-auto mx-auto max-w-2xl mb-8">
             {/* タブの部分 */}
             <ul className="flex border-b rounded-t-lg bg-white">
               {questions.map((_, index) => (
@@ -138,7 +138,7 @@ const Result = () => {
               ))}
             </ul>
             {/* 各タブの詳細表示 */}
-            <div className="p-4 rounded-b-lg bg-white shadow-lg h-20 overflow-auto">
+            <div className="p-4 w- rounded-b-lg bg-white shadow-lg h-20 overflow-auto">
               {activeTab !== null && (
                 <>
                   <p>

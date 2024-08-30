@@ -2,9 +2,12 @@
 
 const Options = ({ options, handleOptionClick, selectedOption }) => {
   return (
-    <div className="mt-6 flex justify-between sm:flex-col">
+    <div className="mt-10 sm:mt-6 flex justify-between sm:flex-col">
       {options.map((option, index) => (
-        <label key={index} className="w-56 h-96 sm:h-64 flex justify-start ">
+        <label
+          key={index}
+          className="w-56 h-96 sm:h-auto sm:w-auto sm:mb-4 flex justify-start"
+        >
           <input
             name="radio"
             type="radio"
