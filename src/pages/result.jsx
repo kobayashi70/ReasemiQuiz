@@ -102,7 +102,7 @@ const Result = () => {
                           : "text-red-500"
                       }`}
                     >
-                      {userAnswers[index]?.isCorrect ? "○" : "✖"}
+                      {userAnswers[index]?.isCorrect ? "○" : "×"}
                     </span>
                     <span className="text-neutral-700">
                       {index + 1}. {question.question}
