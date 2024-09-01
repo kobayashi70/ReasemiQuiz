@@ -13,7 +13,6 @@ const DynamicClock = dynamic(() => import("../components/Clock"), {
 const Home = () => {
   const router = useRouter();
   const dispatch = useDispatch(); // ディスパッチをするために使用
-
   const startQuiz = (course) => {
     dispatch(setCourse(course));
     router.push("/quiz");

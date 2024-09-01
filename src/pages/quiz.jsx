@@ -43,7 +43,7 @@ const Quiz = () => {
   const dispatch = useDispatch(); // ディスパッチをするために使用
   const { questions, currentQuestionIndex, userAnswers, course } = useSelector(
     (state) => state.quiz
-  ); //useSelectorで state.quizから問題、現在の問題のインデックス、スコア、ユーザーの回答を取得
+  ); //useSelectorで state.quizから問題、現在の問題のインデックス、ユーザーの回答,コースを取得
   const router = useRouter(); // Nextjsのルーターで、ページ遷移を制御
 
   useEffect(() => {
